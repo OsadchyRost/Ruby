@@ -1,0 +1,15 @@
+arg=ARGV[0]
+puts "Hello, #{arg}"
+puts 'Какой ваш любимый язык?'
+a = STDIN.gets.chomp
+if a == "ruby"
+	puts "Подлиза!"
+else
+	puts "Скоро будет ruby"
+end
+puts 'Введите команду языка ruby'
+r=STDIN.gets.chomp.to_s
+puts 'Введите команду языка OC'
+o=STDIN.gets.chomp.to_s
+system("ruby -e \'#{r}\'")
+system(o)
