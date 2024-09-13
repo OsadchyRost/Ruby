@@ -1,0 +1,14 @@
+puts "Здравствуйте, " + ARGV[0]
+puts "Введите Ваш любимый язык программирования:"
+a = STDIN.gets.chop.to_s
+if a =="Ruby" then
+	puts "Вы подлиза"
+else 
+	puts "Скоро будет Ruby"
+end
+puts "Введите команду Ruby:"
+ru = STDIN.gets.chop.to_s
+puts "Введите команду ОС:"
+os = STDIN.gets.chop.to_s
+system(os)
+system("ruby -e \'#{ru}\'")
