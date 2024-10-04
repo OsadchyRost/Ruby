@@ -42,3 +42,4 @@ end
 
 answer = nod(sum, result)
 puts "НОД: #{answer}"
+
