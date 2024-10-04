@@ -30,4 +30,3 @@ print "Введите число: "
 number = $stdin.gets.chomp.to_i
 puts "Максимальный простой делитель числа: #{max_prime_divisor(number)}"
 
-
