@@ -16,11 +16,21 @@ def summ(a)
   return res
 end
 
+def is_prime(n)
+  return false if n <= 1
+
+	(2..n/2).each do |i|
+		return false if n % i == 0
+	end
+
+	return true
+end
+
 def maxi_found(n)
   max_res = -1
   (3..n).step(2).each do |i|  
     if n % i == 0
-      if !checking(i)
+      if !is_prime(i)
         max_res = [max_res, i].max
       end
     end
