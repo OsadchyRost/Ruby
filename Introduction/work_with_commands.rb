@@ -26,3 +26,4 @@ puts "Отлично! Теперь введите команду ОС:"
 OScomm = $stdin.gets.chomp
 
 system(OScomm)
+
