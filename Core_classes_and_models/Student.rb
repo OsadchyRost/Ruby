@@ -10,55 +10,9 @@ class Student
       @git=git if git!=nil
     end
   
-    def id
-        @id
-    end
-    def surname
-        @surname
-    end
-    def first_name
-        @first_name
-    end
-    def second_name
-        @second_name
-    end
-    def phone
-        @phone
-    end
-    def telegram
-        @telegram
-    end
-    def mail
-        @mail
-    end
-    def git
-        @git
-    end
-  
-    def id=(value)
-        @id = value
-    end
-    def surname=(value)
-        @surname = value
-    end
-    def first_name=(value)
-        @first_name = value
-    end
-    def second_name=(value)
-        @second_name = value
-    end
-    def phone=(value)
-        @phone = value
-    end
-    def telegram=(value)
-        @telegram = value
-    end
-    def mail=(value)
-        @mail = value
-    end
-    def git=(value)
-        @git = value
-    end
+    attr_reader :id, :surname, :first_name, :second_name, :phone, :telegram, :mail, :git
+    attr_writer :id, :surname, :first_name, :second_name, :phone, :telegram, :mail, :git
+
     def to_s
         "ID: #{id || 'не указан'}, ФИО: #{surname} #{first_name} #{second_name}, Телефон: #{phone || 'не указан'}, Телеграм: #{telegram || 'не указан'}, Почта: #{mail || 'не указана'}, Git: #{git || 'не указан'}"
     end
