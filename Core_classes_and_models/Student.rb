@@ -93,6 +93,29 @@ class Student
 		self.class.valid_phone?(contacts[:phone]) ? (@phone = contacts[:phone]) : (raise ArgumentError, "Некорректный номер телефона")
 	end
 
+	def initials
+		"#{surname} #{firstname[0]}.#{lastname[0]}."
+	end
+
+	def git_info
+		git ? "#{git}" : "Git отсутствует"
+	end
+
+	def contact_info
+		if phone_number
+		  "[Номер телефона] #{phone_number}"
+		elsif telegram
+		  "[Telegram] #{telegram}"
+		elsif mail
+		  "[Почта] #{mail}"
+		else
+		  "Контакты отсутствуют"
+		end
+	end
+
+	def get_info
+		"#{initials}; Git: #{git_info}; Связь: #{contact_info}"
+	end
 
     def to_s
         "ID: #{id || 'не указан'}, ФИО: #{surname} #{first_name} #{second_name}, Телефон: #{phone || 'не указан'}, Телеграм: #{telegram || 'не указан'}, Почта: #{mail || 'не указана'}, Git: #{git || 'не указан'}"
