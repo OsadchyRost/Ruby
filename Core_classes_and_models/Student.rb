@@ -59,5 +59,8 @@ class Student
     def git=(value)
         @git = value
     end
-  
+    def to_s
+        "ID: #{id || 'не указан'}, ФИО: #{surname} #{first_name} #{second_name}, Телефон: #{phone || 'не указан'}, Телеграм: #{telegram || 'не указан'}, Почта: #{mail || 'не указана'}, Git: #{git || 'не указан'}"
+    end
+    
 end
