@@ -100,8 +100,19 @@ class Student
 		str.nil? || str.match?(/\Ahttps:\/\/github.com\/[a-zA-Z0-9_-]+\z/)
 	end
 
+    def validate
+		has_git && has_contacts
+	end	
+
+	def has_git
+		!@git.nil?
+	end
+
+	def has_contacts
+		!@phone.nil? || !@telegram.nil? || !@mail.nil?
+	end
+
     def to_s
         "ID: #{id || 'не указан'}, ФИО: #{surname} #{first_name} #{second_name}, Телефон: #{phone || 'не указан'}, Телеграм: #{telegram || 'не указан'}, Почта: #{mail || 'не указана'}, Git: #{git || 'не указан'}"
     end
 end
-
