@@ -1,7 +1,8 @@
 require './student.rb'
 
-student1 = Student.new("Иванов", "Иван", "Иванович", id: 1,  phone: "fhzdh", telegram: "sdg", mail: "sdf@mail.ru", git: "github.com/irehyvan")
-student2 = Student.new("Иванова", "Мария", "Ивановна", id: 2,  phone: "89447142211", mail: "sdf@mail.ru", git: "github.com/irehyvan")
+student1 = Student.new("Иванов", "Иван", "Иванович", id: 1,  phone: "89447142211", telegram: "@username", mail: "sdf@mail.ru", git: "ggdfjrjyxdjdt")
 
-puts student1
-puts student2
+
+
+student1_short = StudentShort.from_student(student1)
+puts student1_short.to_s
