@@ -4,10 +4,8 @@ class Student
 		self.first_name = first_name
 		self.second_name = second_name
 		self.id = params[:id]
-		self.phone = params[:phone]
-		self.telegram = params[:telegram]
-		self.mail = params[:mail]
 		self.git = params[:git]
+        self.set_contacts(**params)
 	end
   
     attr_reader  :surname, :first_name, :second_name, :id, :telegram, :mail, :git, :phone
@@ -40,23 +38,7 @@ class Student
 		if self.class.valid_id?(val)
 			@id = val 
 		else
-			puts "#{surname} #{first_name} #{second_name}: Некорректный ID"
-		end
-	end
-
-	def telegram=(val)
-		if self.class.valid_telegram?(val)
-			@telegram = val 
-		else
-			puts "#{surname} #{first_name} #{second_name}: Некорректный telegram"
-		end
-	end
-
-	def mail=(val)
-		if self.class.valid_mail?(val)
-			@mail = val 
-		else
-			puts "#{surname} #{firstname} #{lastname}: Некорректная почта"
+			raise ArgumentError, "Некорректный ID"
 		end
 	end
 
@@ -68,15 +50,8 @@ class Student
 		end
 	end
 
-    def phone=(val)
-		if self.class.valid_phone_num?(val)
-			@phone = val
-		else 
-			puts "#{surname} #{first_name} #{second_name}: Некорректный номер телефона"
-		end
-	end
 
-    def self.valid_phone_num?(str)
+    def self.valid_phone?(str)
 		str.nil? || str.match?(/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/)
 	end
     
@@ -112,7 +87,15 @@ class Student
 		!@phone.nil? || !@telegram.nil? || !@mail.nil?
 	end
 
+    def set_contacts(**contacts)
+        self.class.valid_mail?(contacts[:mail]) ? (@mail = contacts[:mail]) : (raise ArgumentError, "Некорректная почта")
+		self.class.valid_telegram?(contacts[:telegram]) ? (@telegram = contacts[:telegram]) : (raise ArgumentError, "Некорректный Telegram")
+		self.class.valid_phone?(contacts[:phone]) ? (@phone = contacts[:phone]) : (raise ArgumentError, "Некорректный номер телефона")
+	end
+
+
     def to_s
         "ID: #{id || 'не указан'}, ФИО: #{surname} #{first_name} #{second_name}, Телефон: #{phone || 'не указан'}, Телеграм: #{telegram || 'не указан'}, Почта: #{mail || 'не указана'}, Git: #{git || 'не указан'}"
     end
 end
+
