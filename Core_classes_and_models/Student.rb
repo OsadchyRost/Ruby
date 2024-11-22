@@ -1,14 +1,14 @@
 class Student
-    def initialize(id:nil, surname:, first_name:, second_name:, phone:nil, telegram:nil, mail:nil, git:nil)
-      @id=id if id!=nil
-      @surname=surname
-      @first_name=first_name
-      @second_name=second_name
-      @phone=phone if phone!=nil
-      @telegram=telegram if telegram!=nil
-      @mail=mail if mail!=nil
-      @git=git if git!=nil
-    end
+  def initialize(surname, first_name, second_name, **params)
+		@surname = surname
+		@first_name = first_name
+		@second_name = second_name
+		@id = params[:id]
+		@phone = params[:phone]
+		@telegram = params[:telegram]
+		@mail = params[:mail]
+		@git = params[:git]
+	end
   
     attr_accessor :id, :surname, :first_name, :second_name, :phone, :telegram, :mail, :git
 
